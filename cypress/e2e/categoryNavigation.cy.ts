@@ -8,11 +8,12 @@ const password = Cypress.env('password')
 describe('template spec', () => {
 
     before(() => {
+                // logging in with valid credentials
+
         cy.login(username, password)
     })
 
     it ('user clicking on each of the CATEGORIES', () => {
-        // logging in with valid credentials
 
         cy.intercept('POST', 'https://api.demoblaze.com/bycat').as('filterByCategory')
 
