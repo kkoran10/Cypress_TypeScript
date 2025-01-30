@@ -26,7 +26,15 @@ describe('template spec', () => {
         cy.wait('@filterByCategory').then((object) => {
             expect(object.response.statusCode).to.eq(200);
 
+
+            //const firstItem = object.response.body[0];
+            const firstItem = object.response.body.Items[0];
+            //expect(firstItem.cat).to.eq('phone');
+           expect (firstItem).to.have.property('cat', 'phone');
+
         })
+
+
         // UI validation that user has clicked on the 'Laptops' category (ALTHOUGH NOT SURE HOW TO VALIDATE THIS AS URL DOES NOT CHANGE)
         cy.get('.list-group-item').contains('Laptops').click();
 
